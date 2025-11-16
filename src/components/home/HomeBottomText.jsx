@@ -17,7 +17,7 @@ const HomeBottomText = () => {
         className="border-[3px] hover:border-[#D3FD50] hover:text-[#D3FD50] 
         h-[7vw] py-[1vw] px-[2vw] mt-[13vw] flex items-center border-white rounded-full uppercase"
       >
-        <Link to="/about" className="text-[7vw] leading-none">
+        <Link to="/agence" className="text-[7vw] leading-none">
           About
         </Link>
       </div>
