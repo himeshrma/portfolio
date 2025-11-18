@@ -3,7 +3,7 @@ import Video from "./Video.jsx";
 
 const HomeHeroText = () => {
   return (
-    <div className="font-[font1] leading-none tracking-tight pt-[0.2vw] text-center">
+    <div className="font-[font1] mt-3 leading-none tracking-tight pt-[0.2vw] text-center">
       <div className="text-[9.5vw] uppercase flex justify-center items-center">
         L'étincelle
       </div>

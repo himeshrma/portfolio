@@ -9,7 +9,7 @@ const Agence = () => {
   const imageDivRef = useRef(null);
   const imageRef = useRef(null);
 
-  const imagesArray = [
+  const imageArray = [
     "../images/0.jpg",
     "../images/1.jpg",
     "../images/2.jpg",
@@ -31,30 +31,34 @@ const Agence = () => {
     gsap.to(imageDivRef.current, {
       scrollTrigger: {
         trigger: imageDivRef.current,
-        markers: false,
-        start: "top 27%",
-        end: "top -65%",
-        scrub: 2,
+        // markers: true,
+        start: "top 28%",
+        end: "top -70%",
         pin: true,
-        onUpdate: (el) => {
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: "transform",
+        scrub: 1, // smooth scrubbing with 1s easing
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (elem) => {
           let imageIndex;
-          if (el.progress < 1) {
-            imageIndex = Math.floor(el.progress * imagesArray.length);
+          if (elem.progress < 1) {
+            imageIndex = Math.floor(elem.progress * imageArray.length);
           } else {
-            imageIndex = Math.floor(el.progress * imagesArray.length - 1);
+            imageIndex = imageArray.length - 1;
           }
-
-          imageRef.current.src = imagesArray[imageIndex];
+          imageRef.current.src = imageArray[imageIndex];
         },
       },
     });
   });
   return (
-    <div>
-      <div className="section1">
+    <div className="parent">
+      <div id="page1" className=" py-1">
         <div
           ref={imageDivRef}
-          className="h-[20vw] w-[15vw] overflow-hidden rounded-4xl absolute top-[27vh] left-[29.7vw]"
+          className=" h-[20vw] w-[15vw] overflow-hidden rounded-3xl absolute top-56 left-[29.7vw] "
         >
           <img
             ref={imageRef}
