@@ -7,3 +7,36 @@
   font-family: font2;
   src: url(../fonts/Lausanne-500.woff2);
 }
+.moveLink {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.link:hover .moveLink {
+  opacity: 1;
+}
+
+/* Infinite scroll animation */
+.moveX {
+  animation: moveAnimation 8s linear infinite;
+}
+
+@keyframes moveAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Close ("X") hover glow */
+.crossline {
+  transition: all 0.25s ease;
+}
+.closeBtn:hover .crossline {
+  background: #d3fd50;
+}
+.closeBtn {
+  transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { NavbarContext } from "../../context/NavContext";
 
 const Navigation = () => {
   const navGreenRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
 
+  const [navOpen, setNavOpen] = useContext(NavbarContext);
+
   return (
-    <div className="z-50 flex fixed top-0 w-full items-start justify-between">
+    <div className="z-10 flex fixed top-0 w-full items-start justify-between">
       {/* LEFT LOGO */}
       <div className="mt-1 ml-2">
         <svg
@@ -29,6 +32,9 @@ const Navigation = () => {
 
       {/* RIGHT MENU SECTION */}
       <div
+        onClick={() => {
+          setNavOpen(true);
+        }}
         onMouseEnter={() => {
           navGreenRef.current.style.height = "100%";
           line1Ref.current.style.background = "black";
@@ -39,16 +45,16 @@ const Navigation = () => {
           line1Ref.current.style.background = "white";
           line2Ref.current.style.background = "white";
         }}
-        className="relative bg-black h-12 w-[14vw] flex items-center justify-end px-6 cursor-pointer overflow-hidden z-30"
+        className="relative bg-black h-12 w-[16vw] flex items-center justify-end px-6 cursor-pointer overflow-hidden z-30"
       >
         {/* GREEN EXPANDING BG */}
         <div
           ref={navGreenRef}
-          className="absolute top-0 left-0 w-full h-0 bg-[#D3FD50] transition-all duration-300 z-10"
+          className="absolute top-0 left-0 w-full h-0 bg-[#D3FD50] transition-all duration-200 z-10"
         ></div>
 
         {/* HAMBURGER LINES */}
-        <div className="flex flex-col gap-1 items-end relative z-20">
+        <div className="flex flex-col gap-1 h-full items-end justify-center rounded-full relative z-20">
           <div ref={line1Ref} className="w-12 h-[0.1vw] bg-white"></div>
           <div ref={line2Ref} className="w-6 h-[0.1vw] bg-white"></div>
         </div>
